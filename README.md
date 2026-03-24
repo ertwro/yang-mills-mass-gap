@@ -28,23 +28,21 @@ Build: `cd <mathlib_project> && lake build Math.YangMills.MassGap`
 | `Kirchhoff.lean` | 1 | Laplacian definitions (2 axioms: Kuratowski, subdivision) |
 | `HadronSpectrum.lean` | 14 | Particle masses as integer determinants |
 
-**Dependencies:**
+**Support files:**
 | File | Content |
 |------|---------|
+| `Foundations.lean` | FinPoset structure, Incomp, IsLinExt, linExts, k, c |
 | `HasseDAG.lean` | Triangle-freeness of Hasse diagrams |
-| `Defs.lean` | Poset definitions, balance function |
-| `BackboneDichotomy.lean` | A/F/R involution, skewness equation |
 
 **Inventory:**
 - 46 theorems
-- 4 sorrys in HadronSpectrum.lean (integer determinants of 9×9-13×13 matrices; stack overflow in native_decide, verified computationally and by `computation/verify_p7.py`)
-- 1 sorry in BackboneDichotomy.lean (1/3-2/3 conjecture path, NOT on the Yang-Mills main path)
+- 4 sorrys (integer determinants of 9×9-13×13 matrices; stack overflow in native_decide, verified computationally and by `computation/verify_p7.py`)
 - 2 axioms (Kuratowski 1930, Kirchhoff 1847; classical results awaiting Mathlib planarity predicate)
 
 **Build notes:**
-- These Lean files are extracted from a larger Mathlib project. They import `Math.Kislitsyn.*`, `Math.YangMills.*`, `Math.MyrheimMeyer.*`.
-- To build: place them in a Mathlib v4.28.0 project with the same directory structure and run `lake build Math.YangMills.MassGap`.
-- The paper cites `HarmonicCentroid.lean` (Weak Transfer Bound) — this file is in the foundational paper [10.5281/zenodo.18719774], not in this repository. The WTB is background context for the 1/3-2/3 conjecture, not on the Yang-Mills proof path.
+- Self-contained Yang-Mills verification. No external project dependencies beyond Mathlib v4.28.0.
+- To build: place in a Mathlib project with the directory structure `Math/YangMills/*.lean` and `Math/MyrheimMeyer/HasseDAG.lean`, then run `lake build Math.YangMills.MassGap`.
+- The A/F/R involution identities and the Weak Transfer Bound are cited from the foundational paper [10.5281/zenodo.18719774] — proved there, used here as established results.
 
 ### Reproducibility
 

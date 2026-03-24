@@ -1,4 +1,4 @@
-import Math.Kislitsyn.CombinatorialBasics
+import Math.YangMills.Foundations
 
 /-!
 # Hasse DAG — Covering Relation and Degree
