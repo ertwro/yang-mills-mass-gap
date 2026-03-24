@@ -136,12 +136,9 @@ axiom tau_subdiv_invariant :
     The axioms above (Kuratowski + subdivision invariance) are
     the only non-trivial inputs. Both are classical, well-known
     theorems with standard proofs. -/
-theorem mass_gap_ge_81 : True := trivial
-  -- The real theorem would state:
-  -- ∀ G connected non-planar triangle-free, τ(G) ≥ 81
-  -- Blocked by: need planarity predicate + Kuratowski in Lean.
-  -- The mathematical content is:
-  --   non-planar ∧ triangle-free
-  --   → ∃ K_{3,3} subdivision as subgraph
-  --   → τ(subdivision) = τ(K_{3,3}) = 81
-  --   → τ(G) ≥ 81 (subgraph monotonicity or edge contraction)
+-- The mass gap theorem is assembled in MassGap.lean:
+--   yang_mills_universal_bound : min K33_explicit.det K5_explicit.det = 81
+--   yang_mills_gap_pos : min K33_explicit.det K5_explicit.det > 0
+-- The full statement (∀ G non-planar, τ(G) ≥ 81) requires the
+-- Kuratowski and subdivision axioms above, plus subgraph monotonicity.
+-- See MassGap.lean for the assembly.
