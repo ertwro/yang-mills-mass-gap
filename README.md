@@ -8,7 +8,7 @@
 ## Contents
 
 ### Preprint
-- `bekenstein_hawking_translation.tex` — LaTeX source (20 pages)
+- `bekenstein_hawking_translation.tex` — LaTeX source (23 pages)
 - `bekenstein_hawking_translation.pdf` — Compiled PDF
 
 ### Lean 4 Verification (Mathlib v4.28.0)
@@ -21,7 +21,7 @@ Build: `cd <mathlib_project> && lake build Math.YangMills.MassGap`
 |------|----------|---------|
 | `K33.lean` | 3 | τ(K₃,₃) = 81 (native_decide) |
 | `K5.lean` | 4 | τ(K₅) = 125, universal bound min(81,125) = 81 |
-| `NonTrivial.lean` | 10 | P₇ witness: R⁺=24, R⁻=0, W²_conn ≠ 0 |
+| `NonTrivial.lean` | 15 | P₇ witness: R⁺=24, R⁻=0, asymptotic freedom α(2)<α(3), confinement ratio = 3 |
 | `MassGap.lean` | 5 | Assembly: mass gap ≥ 81, non-triviality |
 | `ExtGraph.lean` | 3 | Extension Graph connected (unique vacuum, W2) |
 | `Clustering.lean` | 1 | Balance Preservation (convergence key) |
@@ -36,9 +36,14 @@ Build: `cd <mathlib_project> && lake build Math.YangMills.MassGap`
 | `BackboneDichotomy.lean` | A/F/R involution, skewness equation |
 
 **Inventory:**
-- 41 theorems
+- 46 theorems
 - 4 sorrys (integer determinants of 9×9-13×13 matrices; stack overflow in native_decide, verified computationally)
 - 2 axioms (Kuratowski 1930, Kirchhoff 1847; classical results awaiting Mathlib planarity predicate)
+
+### Reproducibility
+
+- `computation/verify_p7.py` — standalone Python script (zero dependencies) reproducing all P₇ claims by exhaustive enumeration of 72 linear extensions. Run: `python3 computation/verify_p7.py`
+- `computation/beta_function_data.csv` — distance-resolved coupling measurements on 8,000 prime posets (n=5..8). Data only; computation engine is proprietary.
 
 ## Summary
 
@@ -52,6 +57,7 @@ Key results:
 - Gauge group: SU(3) (from K₃,₃) or SO(5) (from K₅); both compact simple
 - Hilbert space: GNS construction from subsequentially convergent vacuum state
 - Non-triviality: explicit 7-element witness with R⁺ = 24, R⁻ = 0
+- Asymptotic freedom: α(d=2) = 1/18 < α(d=3) = 1/6, confinement ratio = 3 (Lean-verified)
 - Hadron spectrum: 7 stable hadrons, errors < 2%, zero free parameters
 - Lepton spectrum: tau mass within experimental error bar (+0.003%)
 - Three generations: proved from harmonic 1/k ∩ ½Z = {1, 2}
